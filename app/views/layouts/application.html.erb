@@ -2,11 +2,23 @@
 <html>
 <head>
   <title>Fumblr</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+ 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+ 	<%= csrf_meta_tags %>
+
 </head>
 <body>
+	<% if flash[:notice] %>
+			<p><%= flash[:notice] %></p>
+		<% end %>
+
+		<% if current_user %>
+		<p>Logged in as <%= current_user.username %></p> 
+			<a href="/log_out">Log Out</a>
+		<% else %>
+			<a href="/log_in">Log In</a>
+		<% end %>
+
 
 <%= yield %>
 

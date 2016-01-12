@@ -13,6 +13,8 @@
 		<% end %>
 
 		<% if current_user %>
+			<a href="/posts">Home</a>
+			<a href="/users/<%= current_user.id%>">My Account</a>
 			<a href="/log_out">Log Out</a>
 		<% else %>
 		<!-- 	<a href="/log_in">Log In</a> -->

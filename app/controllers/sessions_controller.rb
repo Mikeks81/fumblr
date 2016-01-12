@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 		if @user
 			session.clear
 			flash[:notice]="Come back again soon!"
-			redirect_to login_path
+			redirect_to log_in_path
 		else
 			redirect_to log_in_path
 		end

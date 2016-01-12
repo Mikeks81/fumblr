@@ -5,6 +5,9 @@
 
 <% @posts.reverse.each do |t| %>
 	<h2><%= t.title %></h2>
+	<!-- <p>By: <a href="/users/<%= t.user.id %>"><%= t.user.username %></a></p> -->
+
+	<p>By: <%= link_to  t.user.username , user_path(t.user)%></p>
 	<p><%= t.body %></p>
 	<p><%= link_to "Show Post", post_path(t) %></p>
 	<br>

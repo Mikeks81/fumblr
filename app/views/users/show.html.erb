@@ -2,17 +2,16 @@
 
 <div id="account-details">
 	<p>Account details</p>
-	<li><%= @user.fname%></li>
-	<li><%= @user.lname%></li>
-	<li><%= @user.username%></li>
-	<li><%= @user.created_at%></li>
+	<li>First Name: <%= @user.fname%></li>
+	<li>Last Name: <%= @user.lname%></li>
+	<li>Username: <%= @user.username%></li>
+	<li>Email: <%= @user.email %></li>
+	<li>Member Since: <%= @user.created_at.strftime(" %B %d, %Y")%></li>
 	<% if @user == current_user %>
 		<%= link_to "Edit my details", edit_user_path %>
 			<%= link_to "Delete my account", @user, method: :delete %>
 	<% end %>
 </div>
-
-
 
 <h2><%= @user.fname %>'s Posts </h2>
 <% @posts.each do |t| %>
@@ -21,6 +20,13 @@
 	<% if @user == current_user %>
 		<%= link_to "Edit Post", edit_post_path(t) %>
 		<%= link_to "Delete Post", t, method: :delete %>
+	<% end %>
+<% end %>
+
+<h2>Other Users</h2>
+<% @users.each do |t| %>
+	<% if t != current_user %>
+		<p><%= link_to t.username, user_path(t) %></p>
 	<% end %>
 <% end %>
 

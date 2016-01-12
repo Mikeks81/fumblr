@@ -1,2 +1,13 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h1>Your Newsfeed</h1>
+<p>Here's what people are saying!</p>
+
+<p><%= link_to "New Post", new_post_path %></p>
+
+<% @posts.reverse.each do |t| %>
+	<h2><%= t.title %></h2>
+	<p><%= t.body %></p>
+	<p><%= link_to "Show Post", post_path(t) %></p>
+	<br>
+<% end %>
+
+

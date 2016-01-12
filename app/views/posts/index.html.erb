@@ -1,7 +1,15 @@
 <h1>Your Newsfeed</h1>
 <p>Here's what people are saying!</p>
 
-<p><%= link_to "New Post", new_post_path %></p>
+<h1>Write New Post</h1>
+
+<%= form_for @post do |t| %>
+	<%= t.label :title %>
+	<%= t.text_field :title %>
+	<%= t.label :body %>
+	<%= t.text_field :body %>
+	<%= t.submit :create %>
+<% end %>
 
 <% @posts.reverse.each do |t| %>
 	<h2><%= t.title %></h2>

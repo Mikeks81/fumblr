@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   end
 
   def create
-	puts params.inspect
 	@user = User.new(params[:user])
   	if @user.save
   	session[:user_id] = @user.id

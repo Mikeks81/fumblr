@@ -8,20 +8,22 @@
 
 </head>
 <body>
-	<% if flash[:notice] %>
-			<p><%= flash[:notice] %></p>
-		<% end %>
-
+	<nav>
+		<h1 id="icon">fumblr</h1>
 		<% if current_user %>
-			<a href="/posts">Home</a>
-			<a href="/users/<%= current_user.id%>">My Account</a>
-			<a href="/log_out">Log Out</a>
-		<% else %>
-		<!-- 	<a href="/log_in">Log In</a> -->
+			<a href="/log_out">LOG OUT</a>
+			<a href="/users/<%= current_user.id%>">MY ACCOUNT</a>
+			<a href="/posts">HOME</a>	
 		<% end %>
+	</nav>
 
+	<% if flash[:notice] %>
+		<!-- 	<p id="flash"><%= flash[:notice] %></p>
+ -->	<% end %>
 
-<%= yield %>
+	<div id="main">
+		<%= yield %>
+	</div>
 
 </body>
 </html>

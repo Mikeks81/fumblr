@@ -1,15 +1,26 @@
 <h2>Please sign up!</h2>
-
+<hr>
 <%= form_for @user do |f| %>
-	<%=f.label :first_name %>
+	<div class="col1" style="margin-left:0;text-align:center">
+	<h3><%=f.label :first_name %></h3>
 	<%=f.text_field :fname %>
-	<%=f.label :last_name %>
+	<br><br>
+	<h3><%=f.label :last_name %></h3>
 	<%=f.text_field :lname %>
-	<%=f.label :email %>
+	<br><br>
+	<h3><%=f.label :email %></h3>
 	<%=f.text_field :email %>
-	<%=f.label :username %>
+	</div>
+	<div class="col2" style="margin-right:10px">
+	<h3><%=f.label :username %></h3>
 	<%=f.text_field :username %>
-	<%=f.label :password %>
+	<br><br>
+	<h3><%=f.label :password %></h3>
 	<%=f.password_field :password %>
+	<br><br><br>
 	<%=f.submit %>
+	</div>
+
+	
+	<br><br><br>
 <% end %>

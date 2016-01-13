@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 		if @user && @user.password == params[:password]
 			flash[:notice] = "You're logged in"
 			session[:user_id] = @user.id
-			redirect_to user_path(@user)
+			redirect_to posts_path
 		else
 			flash[:notice] = "Incorrect username or password"
 			redirect_to log_in_path
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 		if @user
 			session.clear
 			flash[:notice]="Come back again soon!"
-			redirect_to log_in_path
+			redirect_to root_path
 		else
 			redirect_to log_in_path
 		end

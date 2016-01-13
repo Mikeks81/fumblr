@@ -1,24 +1,29 @@
-<h1>Your Newsfeed</h1>
-<p>Here's what people are saying!</p>
+<h1>Welcome, <%= @user.fname %></h1>
+<hr>
 
-<h1>Write New Post</h1>
+<div class="col1">
+	<h2>Your Newsfeed</h2>
+		<p>Scroll to see what people are saying!</p>	
+		<% @posts.reverse.each do |t| %>
+		<hr style="margin-left:0">
+			<h3><%= t.title %></h3>
+			<!-- <p>By: <a href="/users/<%= t.user.id %>"><%= t.user.username %></a></p> -->
+			<p>By: <%= link_to  t.user.username , user_path(t.user)%></p>
+			<p><%= t.body %></p>
+			<p><%= link_to "Show Post", post_path(t) %></p>
+		<% end %>
+</div>
 
-<%= form_for @post do |t| %>
-	<%= t.label :title %>
-	<%= t.text_field :title %>
-	<%= t.label :body %>
-	<%= t.text_field :body %>
-	<%= t.submit :create %>
-<% end %>
-
-<% @posts.reverse.each do |t| %>
-	<h2><%= t.title %></h2>
-	<!-- <p>By: <a href="/users/<%= t.user.id %>"><%= t.user.username %></a></p> -->
-
-	<p>By: <%= link_to  t.user.username , user_path(t.user)%></p>
-	<p><%= t.body %></p>
-	<p><%= link_to "Show Post", post_path(t) %></p>
-	<br>
-<% end %>
-
+<div class="col2">
+	<h2>Write A New Post</h2>
+	<%= form_for @post do |t| %>
+		<h3><%= t.label :title %></h3>
+		<%= t.text_field :title %>
+		<br>
+		<h3><%= t.label :body %></h3>
+		<%= t.text_area :body %>
+		<br><br>
+		<%= t.submit :create %>
+	<% end %>
+</div>
 

@@ -35,6 +35,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = current_user
+    if @user.destroy
+      flash[:notice] = "This user was deleted"
+    else
+      flash[:notice] = "Unable to delete the user"
+    end
+    redirect_to root_path
   end
 
 end

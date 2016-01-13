@@ -33,7 +33,7 @@
 
 	<h2>Other Users</h2>
 	<% @users.each do |t| %>
-	<% if t != current_user %>
+	<% if t != current_user && t != @user  %>
 		<p><%= link_to t.username, user_path(t) %></p>
 	<% end %>
 <% end %>

@@ -3,3 +3,22 @@
 <h2><%= @post.title %></h2>
 <p>By: <%= @post.user.username %></p>
 <p><%= @post.body %></p>
+
+<h3> Comments </h3>
+<% @post.comments.each do |c| %>
+	<%= c.content %>
+	<% if c.user == current_user %>
+		<%= link_to "Edit Comment", edit_post_comment_path(@post,c) %>
+		<%= link_to "Delete Comment", post_comment_path(@post,c) , method: :delete %>
+	<% end %>
+	<hr>
+<% end %>
+
+ <h1>Write a Comment</h1>
+
+ <%= form_for [@post, @comment] do |t| %>
+	<%= t.text_field :content %>
+	<%= t.submit :create %>
+<% end %>
+
+

@@ -51,4 +51,9 @@ class UsersController < ApplicationController
       params.require(:user).permit(:fname, :lname, :username, :email, :password)   
    end
 
+   # @post = Post.find(params[:post_id])
+   # @comment = @post.comments.build(comment_params)
+   # @comment.user = current_user
+   # @comment.save
+
 end

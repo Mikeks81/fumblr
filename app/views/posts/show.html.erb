@@ -6,19 +6,23 @@
 
 <h3> Comments </h3>
 <% @post.comments.each do |c| %>
-	<%= c.content %>
+	<p><%= c.content %></p>
 	<% if c.user == current_user %>
 		<%= link_to "Edit Comment", edit_post_comment_path(@post,c) %>
+		&nbsp; &#9733; &nbsp;
 		<%= link_to "Delete Comment", post_comment_path(@post,c) , method: :delete %>
 	<% end %>
-	<hr>
+	<hr style="width:40%">
 <% end %>
 
- <h1>Write a Comment</h1>
+ <h2>What do you think?</h2>
 
  <%= form_for [@post, @comment] do |t| %>
 	<%= t.text_field :content %>
-	<%= t.submit :create %>
+	<br><br>
+	<%= t.submit :create, value: :comment %>
 <% end %>
+
+<br><br>
 
 

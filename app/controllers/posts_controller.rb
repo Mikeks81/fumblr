@@ -37,7 +37,7 @@ class PostsController < ApplicationController
 	def update
 		@user = current_user
 		@post = Post.find(params[:id])
-		@post.update(params[:post])
+		@post.update(post_params)
 		@post.save
 		flash[:notice] = "Thanks for editing"
 		redirect_to posts_path

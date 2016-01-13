@@ -8,7 +8,7 @@
 		<hr style="margin-left:0">
 			<h3><%= t.title %></h3>
 			<!-- <p>By: <a href="/users/<%= t.user.id %>"><%= t.user.username %></a></p> -->
-			<p>By: <%= link_to  t.user.username , user_path(t.user)%></p>
+			<p>By: <%= link_to t.user.username , user_path(t.user)%></p>
 			<p><%= t.body %></p>
 			<p><%= link_to "Show Post", post_path(t) %></p>
 		<% end %>

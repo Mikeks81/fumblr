@@ -19,7 +19,7 @@ class PostsController < ApplicationController
 	def create
 		# @user = current_user
 		# @post = Post.new(params[:post]).merge(user_id: @user.id)
-		@post = current_user.posts.build(params[:post])
+		@post = current_user.posts.build(post_params)
 		if @post.save
 			flash[:notice] = "Thanks for posting!"
 			redirect_to posts_path
@@ -53,4 +53,8 @@ class PostsController < ApplicationController
 		end
 		redirect_to posts_path
 	end
+   private
+   	def post_params
+   		params.require(:post).permit(:title, :body)
+   	end
 end

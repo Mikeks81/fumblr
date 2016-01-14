@@ -32,10 +32,11 @@ nav {
 	position: fixed;
     top: 0;
     left: 0;
+    background-color:#ededed;
     z-index: -999999;
 }
 
-#opacity_container {
+/*#opacity_container {
 	position: fixed;
 	height:100%;
 	width:100%;
@@ -43,7 +44,7 @@ nav {
 	left: 0;
 	background-color:rgba(255,255,255, 0.25); 
 	z-index: -999998
-}
+}*/
 
 #icon {
 	float: left;
@@ -78,7 +79,7 @@ nav a:hover{
 }
 
 #main {
-  	width: 70%;
+  	width: 80%;
   	margin: 120px auto 0px;
   	text-align: center;
   	background-color: #9999CC;
@@ -88,7 +89,7 @@ nav a:hover{
 }
 
 #newsfeed_title h2,p{
-	margin: 10px 0 5px 0;
+	margin: 20px 0 20px 0;
 }
 
 .welcome_message {
@@ -109,9 +110,20 @@ nav a:hover{
 
 #posts_lists {
 	margin-left: 0;
-
+	margin-top: 10px;
     /*padding-left: 50px;*/
-    height: 300px;
+    height: 340px;
+    text-align: left;
+    background-color: #9999CC;
+    border-radius: 3px;
+    overflow: scroll;
+}
+
+#posts_lists_user {
+	margin-left: 0;
+	margin-top: 10px;
+    /*padding-left: 50px;*/
+    height: 270px;
     text-align: left;
     background-color: #9999CC;
     border-radius: 3px;
@@ -127,6 +139,10 @@ nav a:hover{
 
 .post_box_in_scroll h3, p {
 	padding-left: 20px;
+}
+
+.created_time {
+	font-size: 14px;
 }
 
 #post_menu {
@@ -162,25 +178,36 @@ hr {
   	width: 70%;
 }
 
+#new_post {
+	padding-top: 10px
+}
+
 #post_title {
 	width: 300px;
 	height: 30px;
+	border: none;
 	background-color: #e3e3f4;
 }
 
 #post_body {
 	width: 300px;
 	height: 100px;
+	border: none;
 	background-color: #e3e3f4;
+}
+
+#no_posts {
+	text-align: center;
 }
 
 input[type="submit"] {
 	background-color: #d8d8d8;
-	border-radius: 10px;
+	border-radius: 5px;
 	width: 100px;
 	height: 30px;
 	font-size: 14px;
 	font-weight: bold;
+	border: none;
 }
 
 #username, #password, #user_fname, #user_lname, #user_email, #user_username, #user_password, #comment_content {
@@ -188,6 +215,51 @@ input[type="submit"] {
 	width: 200px;
 }
 
+#account_details {
+	width: 80%;
+	height: 225px;
+	padding-top: 10px;
+	margin: auto;
+	background-color: #E3E3F4;
+}
+
+#account_details p {
+	margin: 10px;
+}
+
+#other_users {
+	
+	width: 80%;
+	height: 95px;
+	margin: 10px auto;
+	background-color: #E3E3F4;
+	overflow: scroll;
+}
+
+#comment_scroll {
+	margin: auto;
+    margin-top: 10px;
+    width: 30%;
+    height: 150px;
+    text-align: left;
+    background-color: #e3e3f4;
+    border-radius: 3px;
+    overflow: scroll
+}
+
+
+
+/*#post_show {
+	margin-left: 0;
+    margin-top: 10px;
+    width: 70%;
+    height: 150px;
+    text-align: left;
+    background-color: #e3e3f4;
+    border-radius: 3px;
+    overflow: scroll
+}
+*/
 /*#post_title{
 	position: relative;
 	width: 100%;

@@ -1,27 +1,29 @@
 <h1>Let's look at this post up close</h1>
 <hr>
-<h2><%= @post.title %></h2>
-<p>By: <%= @post.user.username %></p>
-<p><%= @post.body %></p>
-<hr>
+	<div id="post_show">
+		<h2><%= @post.title %></h2>
+		<p>By: <%= @post.user.username %></p>
+		<p><%= @post.body %></p>
+	</div>
 <h3> Comments: </h3>
 
 <div id="comment_container">
 	<% if @post.comments != [] %>
 		<% @post.comments.each do |c| %>
 			<p><%= c.content %></p>
+			<p>Created <%= time_ago_in_words(c.created_at) %> ago.</p>
 			<% if c.user == current_user %>
 				<%= link_to "Edit Comment", edit_post_comment_path(@post,c) %>
 				&nbsp; &#9733; &nbsp;
 				<%= link_to "Delete Comment", post_comment_path(@post,c) , method: :delete %>
+				<% end %>
+				<br>
 			<% end %>
-			<hr style="width:40%">
-			<br>
-		<% end %>
 	<% else %>
 		<p>No comments yet...be the first!</p>
 	<%end%>
 </div>
+<br>
 
 <%= form_for [@post, @comment] do |t| %>
 	<%= t.text_field :content %>

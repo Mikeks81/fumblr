@@ -8,7 +8,6 @@
 
 </head>
 <body>
-	
 	<% if flash[:notice] %>
 		<p id="flash"><%= flash[:notice] %></p>
 	<% end %>
@@ -26,6 +25,11 @@
 
 	<div id="main">
 		<%= yield %>
+	</div>
+	<div id="background_image">
+		<%= image_tag("space.jpg") %>
+	</div>
+	<div id="opacity_container">
 	</div>
 
 

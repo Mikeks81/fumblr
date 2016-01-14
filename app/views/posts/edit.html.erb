@@ -1,10 +1,11 @@
 <h1>Edit Post:</h1>
 
 <%= form_for @post do |t| %>
-	<%= t.label :title %>
+	<h3><%= t.label :title %></h3>
 	<%= t.text_field :title %>
-	<%= t.label :body %>
+	<h3><%= t.label :body %></h3>
 	<%= t.text_field :body %>
+	<br><br><br>
 	<%= t.submit :update %>
 <% end %>
 

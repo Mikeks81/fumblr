@@ -3,26 +3,32 @@
 <h2><%= @post.title %></h2>
 <p>By: <%= @post.user.username %></p>
 <p><%= @post.body %></p>
+<hr>
+<h3> Comments: </h3>
 
-<h3> Comments </h3>
-<% @post.comments.each do |c| %>
-	<p><%= c.content %></p>
-	<% if c.user == current_user %>
-		<%= link_to "Edit Comment", edit_post_comment_path(@post,c) %>
-		&nbsp; &#9733; &nbsp;
-		<%= link_to "Delete Comment", post_comment_path(@post,c) , method: :delete %>
-	<% end %>
-	<hr style="width:40%">
-<% end %>
+<div id="comment_container">
+	<% if @post.comments != [] %>
+		<% @post.comments.each do |c| %>
+			<p><%= c.content %></p>
+			<% if c.user == current_user %>
+				<%= link_to "Edit Comment", edit_post_comment_path(@post,c) %>
+				&nbsp; &#9733; &nbsp;
+				<%= link_to "Delete Comment", post_comment_path(@post,c) , method: :delete %>
+			<% end %>
+			<hr style="width:40%">
+			<br>
+		<% end %>
+	<% else %>
+		<p>No comments yet...be the first!</p>
+	<%end%>
+</div>
 
- <h2>What do you think?</h2>
-
- <%= form_for [@post, @comment] do |t| %>
+<%= form_for [@post, @comment] do |t| %>
 	<%= t.text_field :content %>
 	<br><br>
 	<%= t.submit :create, value: :comment %>
 <% end %>
-
 <br><br>
+
 
 

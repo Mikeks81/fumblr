@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).ready(function(){
+	
+	$('#flash').delay(2000).fadeOut(1000);
+
+
+});

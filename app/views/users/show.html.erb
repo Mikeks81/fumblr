@@ -7,6 +7,8 @@
 		<h3><%= t.title %></h3>
 		<p><%= t.body %></p>
 		<% if @user == current_user %>
+			<%= link_to "Show Post", post_path(t) %>
+			&nbsp; &#9733; &nbsp;
 			<%= link_to "Edit Post", edit_post_path(t) %>
 			&nbsp; &#9733; &nbsp;
 			<%= link_to "Delete Post", t, method: :delete %>

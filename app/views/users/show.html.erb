@@ -1,46 +1,60 @@
-<h1><%= @user.fname %>'s Profile</h1>
-<hr>
+<h1 class="welcome_message"><%= @user.fname %>'s Profile</h1>
+
 
 <div class="col1">
-	<h2><%= @user.fname %>'s Posts </h2>
-	<% @posts.each do |t| %>
-		<h3><%= t.title %></h3>
-		<p><%= t.body %></p>
-		<p>Created <%= time_ago_in_words(t.created_at) %> ago.</p>
-		<% if @user == current_user %>
-			<%= link_to "Show Post", post_path(t) %>
-			&nbsp; &#9733; &nbsp;
-			<%= link_to "Edit Post", edit_post_path(t) %>
-			&nbsp; &#9733; &nbsp;
-			<%= link_to "Delete Post", t, method: :delete %>
+	<div id="newsfeed_title">
+		<h2><%= @user.fname %>'s Posts </h2>
+		</div>
+	<div id="posts_lists">
+	<% if @posts != [] %>
+		<% @posts.each do |t| %>
+			<div class="post_box_in_scroll">
+				<h3><%= t.title %></h3>
+				<p><%= t.body %></p>
+				<p class="created_time">Created <%= time_ago_in_words(t.created_at) %> ago.</p>
+				<div id="post_menu">
+					<% if @user == current_user %>
+						<p><%= link_to "Show Post", post_path(t) %>
+						&nbsp; &#9733; &nbsp;
+						<%= link_to "Edit Post", edit_post_path(t) %>
+						&nbsp; &#9733; &nbsp;
+						<%= link_to "Delete Post", t, method: :delete %></p>
+					<% end %>
+				</div>
+			</div>
 		<% end %>
-		<hr style="margin-left:0">
+	<% else %>
+		<p id="no_posts">Tell us what you think and make a Post.</p>
 	<% end %>
+	</div>
 </div>
 
 <div class="col2">
-	<div id="account-details">
+	<div id="account_container">
 		<h2>Account details</h2>
-		<p><b>First Name:</b> <%= @user.fname%></p>
-		<p><b>Last Name:</b> <%= @user.lname%></p>
-		<p><b>Username:</b> <%= @user.username%></p>
-		<p><b>Email:</b> <%= @user.email %></p>
-		<p><b>Member Since:</b> <%= @user.created_at.strftime(" %B %d, %Y")%></li>
-		<p><b>Number of Posts:</b> <%= @user.posts.count %></p>
-			<br><br>
-		<% if @user == current_user %>
-			<%= link_to "Edit my details", edit_user_path %>
-			&nbsp; &#9733; &nbsp;
-				<%= link_to "Delete my account", @user, method: :delete %>
+		<div id="account_details">
+			<p><b>First Name:</b> <%= @user.fname%></p>
+			<p><b>Last Name:</b> <%= @user.lname%></p>
+			<p><b>Username:</b> <%= @user.username%></p>
+			<p><b>Email:</b> <%= @user.email %></p>
+			<p><b>Member Since:</b> <%= @user.created_at.strftime(" %B %d, %Y")%></p>
+			<p><b>Number of Posts:</b> <%= @user.posts.count %></p>
+			<% if @user == current_user %>
+				<%= link_to "Edit my details", edit_user_path %>
+				&nbsp; &#9733; &nbsp;
+					<%= link_to "Delete my account", @user, method: :delete %>
+			<% end %>
+		</div>
+	</div>
+	<div id="other_users">
+		<h2>Other Users</h2>
+		<% @users.each do |t| %>
+		<% if t != current_user && t != @user  %>
+			<p><%= link_to t.username, user_path(t) %></p>
+		<% end %>
 		<% end %>
 	</div>
 
-	<h2>Other Users</h2>
-	<% @users.each do |t| %>
-	<% if t != current_user && t != @user  %>
-		<p><%= link_to t.username, user_path(t) %></p>
-	<% end %>
-<% end %>
 </div>
 
 

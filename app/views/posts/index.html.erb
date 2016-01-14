@@ -5,12 +5,12 @@
 			<h2>Your Newsfeed</h2>
 			<p>Scroll to see what people are saying!</p>
 		</div>	
-		<div id="posts_lists">
+		<div id="posts_lists_user">
 			<% @posts.reverse.each do |t| %>
 				<div class="post_box_in_scroll">
 					<h3><%= t.title %></h3>
 					<p><%= t.body %></p>
-					<p>Created <%= time_ago_in_words(t.created_at) %> ago.</p>
+					<p class="created_time">Created <%= time_ago_in_words(t.created_at) %> ago.</p>
 					<div id="post_menu">
 						<p>By: <%= link_to t.user.username , user_path(t.user)%>&nbsp; &#9733;</p>
 						<p><%= link_to "Show Post", post_path(t) %>&nbsp; &#9733;</p>
@@ -23,11 +23,11 @@
 <div class="col2">
 	<h2>Write A New Post</h2>
 	<%= form_for @post do |t| %>
-		<h3><%= t.label :title %></h3>
-		<%= t.text_field :title %>
+		<%#= t.label :title %>
+		<p><%= t.text_field :title, :placeholder => "Title of your post" %></p>
 		<br>
-		<h3><%= t.label :body %></h3>
-		<%= t.text_area :body %>
+		<%#= t.label :body %>
+		<p><%= t.text_area :body, :placeholder => "Enter your post here" %></p>
 		<br><br>
 		<%= t.submit :create %>
 	<% end %>

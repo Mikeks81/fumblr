@@ -10,6 +10,7 @@
 	<% if @post.comments != [] %>
 		<% @post.comments.each do |c| %>
 			<p><%= c.content %></p>
+			<p>Created <%= time_ago_in_words(c.created_at) %> ago.</p>
 			<% if c.user == current_user %>
 				<%= link_to "Edit Comment", edit_post_comment_path(@post,c) %>
 				&nbsp; &#9733; &nbsp;

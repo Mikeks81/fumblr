@@ -6,9 +6,9 @@
 		<h2><%= @user.fname %>'s Posts </h2>
 		</div>
 	<div id="posts_lists">
+	<div class="post_box_in_scroll">
 	<% if @posts != [] %>
 		<% @posts.reverse.each do |t| %>
-			<div class="post_box_in_scroll">
 				<h3><%= t.title %></h3>
 				<p><%= t.body %></p>
 				<p class="created_time">Created <%= time_ago_in_words(t.created_at) %> ago.</p>

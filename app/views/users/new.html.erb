@@ -1,5 +1,14 @@
 <h2>Please sign up!</h2>
 <hr>
+<%#= my_error(@user) %>
+<% if @user.errors.full_messages.any? %>
+	<ul>
+		<% @user.errors.full_messages.each do |e| %>
+			<li> <%= e %></li>
+		<% end %>
+	</ul>
+<% end %>
+
 <%= form_for @user do |f| %>
 	<div class="col1" style="margin-left:0;text-align:center">
 	<h3><%=f.label :first_name %></h3>

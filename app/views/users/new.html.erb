@@ -1,6 +1,6 @@
 <h2>Please sign up!</h2>
 <hr>
-<%#= my_error(@user) %>
+
 <% if @user.errors.full_messages.any? %>
 	<ul>
 		<% @user.errors.full_messages.each do |e| %>

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     flash[:notice] = "Thanks for joining!"
     redirect_to posts_path 
   	else
-    redirect_to new_user_path
+    render "new"
   	end
   end
 
@@ -50,10 +50,5 @@ class UsersController < ApplicationController
    def user_params
       params.require(:user).permit(:fname, :lname, :username, :email, :password)   
    end
-
-   # @post = Post.find(params[:post_id])
-   # @comment = @post.comments.build(comment_params)
-   # @comment.user = current_user
-   # @comment.save
 
 end

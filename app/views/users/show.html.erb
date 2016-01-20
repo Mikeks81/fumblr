@@ -4,28 +4,28 @@
 <div class="col1">
 	<div id="newsfeed_title">
 		<h2><%= @user.fname %>'s Posts </h2>
-		</div>
+	</div>
 	<div id="posts_lists">
-	<div class="post_box_in_scroll">
-	<% if @posts != [] %>
-		<% @posts.reverse.each do |t| %>
-				<h3><%= t.title %></h3>
-				<p><%= t.body %></p>
-				<p class="created_time">Created <%= time_ago_in_words(t.created_at) %> ago.</p>
-				<div id="post_menu">
-					<% if @user == current_user %>
-						<p><%= link_to "Show Post", post_path(t) %>
-						&nbsp; &#9733; &nbsp;
-						<%= link_to "Edit Post", edit_post_path(t) %>
-						&nbsp; &#9733; &nbsp;
-						<%= link_to "Delete Post", t, method: :delete %></p>
-					<% end %>
-				</div>
-			</div>
-		<% end %>
-	<% else %>
-		<p id="no_posts">Tell us what you think and make a Post.</p>
-	<% end %>
+		<div class="post_box_in_scroll">
+			<% if @posts != [] %>
+				<% @posts.reverse.each do |t| %>
+					<h3><%= t.title %></h3>
+					<p><%= t.body %></p>
+					<p class="created_time">Created <%= time_ago_in_words(t.created_at) %> ago.</p>
+					<div id="post_menu">
+						<% if @user == current_user %>
+							<p><%= link_to "Show Post", post_path(t) %>
+							&nbsp; &#9733; &nbsp;
+							<%= link_to "Edit Post", edit_post_path(t) %>
+							&nbsp; &#9733; &nbsp;
+							<%= link_to "Delete Post", t, method: :delete %></p>
+						<% end %>
+					</div>
+				<% end %>
+			<% else %>
+				<p id="no_posts">Tell us what you think and make a Post.</p>
+			<% end %>
+		</div>
 	</div>
 </div>
 
@@ -42,7 +42,7 @@
 			<% if @user == current_user %>
 				<%= link_to "Edit my details", edit_user_path %>
 				&nbsp; &#9733; &nbsp;
-					<%= link_to "Delete my account", @user, method: :delete %>
+				<%= link_to "Delete my account", @user, method: :delete %>
 			<% end %>
 		</div>
 	</div>

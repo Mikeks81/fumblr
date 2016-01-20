@@ -12,7 +12,7 @@
 					<p><%= t.body %></p>
 					<p class="created_time">Created <%= time_ago_in_words(t.created_at)%> ago.</p>
 					<div id="post_menu">
-						<p>By: <%= link_to t.user_id , user_path(t.user_id) %>&nbsp; &#9733;</p>
+						<p>By: <%= link_to t.user.username , user_path(t.user_id) %>&nbsp; &#9733;</p>
 						<p><%= link_to "Show Post", post_path(t) %>&nbsp; &#9733;</p>
 					</div>
 				</div>
